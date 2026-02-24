@@ -272,7 +272,7 @@ export default function PicnicDayPage() {
             
 
             {/* Map + Schedule — second when stacked; right column on large */}
-            <div className="order-2 w-full min-w-0 flex flex-col gap-4 relative lg:flex-1 lg:gap-0 lg:min-w-[360px]">
+            <div className="order-2 w-full min-w-0 flex flex-col gap-4 relative lg:flex-1 lg:gap-0 lg:min-w-[360px] min-h-[320px] lg:min-h-0">
               <CampusMap
                 events={filteredEvents}
                 scheduledEvents={scheduledEvents}

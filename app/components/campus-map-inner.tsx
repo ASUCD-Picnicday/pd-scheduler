@@ -300,7 +300,7 @@ export default function CampusMapInner({
   }
 
   return (
-    <div className="w-full h-[400px] md:h-auto md:flex-1 md:min-h-0">
+    <div className="w-full min-h-[320px] h-[400px] lg:h-auto lg:flex-1 lg:min-h-0">
       <MapContainer
         className="h-full w-full"
         center={[38.5382, -121.7617]}
