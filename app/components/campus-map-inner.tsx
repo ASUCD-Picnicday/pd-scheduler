@@ -7,6 +7,22 @@ import type { Event, ScheduledEvent } from "@/app/page";
 import RoutingMachine from "./routing-machine";
 import { formatTime } from "@/app/lib/time";
 
+/* Re-tile when container resizes (prevents gray area at bottom) */
+function InvalidateSizeOnResize() {
+  const map = useMap();
+
+  useEffect(() => {
+    const container = map.getContainer();
+    const ro = new ResizeObserver(() => {
+      map.invalidateSize();
+    });
+    ro.observe(container);
+    return () => ro.disconnect();
+  }, [map]);
+
+  return null;
+}
+
 /* Fit map bounds to scheduled events when exporting */
 function FitBoundsOnExport({
   points,
@@ -300,7 +316,7 @@ export default function CampusMapInner({
   }
 
   return (
-    <div className="w-full min-h-[320px] h-[400px] lg:h-auto lg:flex-1 lg:min-h-0">
+    <div data-onboarding="campus-map" className="w-full min-h-[320px] h-[400px] lg:h-auto lg:flex-1 lg:min-h-0">
       <MapContainer
         className="h-full w-full"
         center={[38.5382, -121.7617]}
@@ -316,6 +332,7 @@ export default function CampusMapInner({
         style={{ height: "100%", width: "100%" }}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <InvalidateSizeOnResize />
 
         {eventsOnMap.map((event) => {
           const scheduleIndex = scheduleIndexByEventId.get(event.id);
