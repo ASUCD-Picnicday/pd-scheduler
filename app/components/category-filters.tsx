@@ -90,31 +90,8 @@ setSortOption,
       </div>
       <div data-onboarding="category-filters">
         <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">
-          CATEGORIES
+          FILTER BY
         </h3>
-        {/* Active badge */}
-        {selectedCategories.length > 0 && (
-          <div className="flex items-center justify-between pt-1 mb-3">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/50 border border-border">
-              <span className="w-2 h-2 rounded-full bg-pink-500" />
-              <span className="text-xs font-semibold text-primary">
-                {selectedCategories.length} active
-              </span>
-            </div>
-
-            <button
-              onClick={() => selectedCategories.forEach(toggleCategory)}
-              className="
-                text-[11px] font-medium
-                text-muted-foreground
-                hover:text-pink-500
-                transition
-              "
-            >
-              Clear
-            </button>
-          </div>
-        )}
         {/* CATEGORY LIST */}
         <div className="flex gap-2 overflow-x-auto pb-1 -mx-1
                         xl:flex-col xl:gap-2 xl:overflow-visible xl:mx-0 xl:pb-0">
@@ -154,6 +131,29 @@ setSortOption,
             )
           })}
         </div>
+        {/* Active badge */}
+        {selectedCategories.length > 0 && (
+          <div className="flex items-center justify-between mt-3 mb-3">  
+            {/* <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/50 border border-border">
+              <span className="w-2 h-2 rounded-full bg-pink-500 " />
+              <span className="">
+                {selectedCategories.length} active
+              </span>
+            </div> */}
+
+            <button
+              onClick={() => selectedCategories.forEach(toggleCategory)}
+              className="
+                text-[11px] font-medium
+                text-muted-foreground
+                hover:text-pink-500
+                transition
+              "
+            >
+              Clear All
+            </button>
+          </div>
+        )}
       </div>
     </div>
   )
