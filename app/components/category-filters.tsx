@@ -127,24 +127,22 @@ setSortOption,
                 key={category.id}
                 onClick={() => toggleCategory(category.id)}
                 className={`
-                  relative flex items-start gap-3 p-2 pl-4 rounded-lg
-                  transition-all duration-200 text-left border-0
-                  flex-shrink-0 w-auto min-w-[170px] xl:w-full
+                  relative flex items-start gap-3 p-2 rounded-lg border
+                  transition-all duration-200 text-leftflex-shrink-0 w-auto min-w-[170px] xl:w-full
+                  border-border
+                  hover:bg-pink-500/5
+                  ${isSelected
+                    ? "bg-pink-500/10 border-pink-500/50 shadow-sm"
+                    : ""
+                  }
                 `}
                 style={{
-                  boxShadow: `inset 4px 0 0 ${category.color}, inset 0 0 0 1px ${isSelected ? category.color : category.color + "40"}`,
-                  backgroundColor: isSelected ? `${category.color}1a` : undefined,
-                }}
-                onMouseEnter={(e) => {
-                  if (!isSelected) e.currentTarget.style.backgroundColor = `${category.color}0d`
-                }}
-                onMouseLeave={(e) => {
-                  if (!isSelected) e.currentTarget.style.backgroundColor = ''
+                  borderLeft: "4px solid #ec4899",
                 }}
                 >
                 <Icon
-                  className="w-4 h-4 mt-0.5 flex-shrink-0"
-                  style={{ color: category.color }}
+                   className="w-4 h-4 mt-0.5 flex-shrink-0 text-pink-500"
+
                 />
 
                 <div className="min-w-0">
