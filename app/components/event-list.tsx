@@ -117,6 +117,8 @@ export function EventList({
                   hover:bg-accent hover:text-accent-foreground
                   transition
                   disabled:opacity-30 disabled:cursor-not-allowed
+                  disabled:hover:bg-secondary/50
+                  disabled:hover:text-primary
                 "
               >
                 <ChevronRight className="w-4 h-4" />

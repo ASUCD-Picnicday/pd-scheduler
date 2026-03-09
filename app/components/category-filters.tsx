@@ -66,7 +66,7 @@ setSortOption,
         <select
           value={sortOption}
           onChange={(e) =>
-            setSortOption(e.target.value as "relevance" | "time")
+            setSortOption(e.target.value as "relevance" | "alphabetical" | "time")
           }
           className="
             w-full
@@ -105,7 +105,7 @@ setSortOption,
                 onClick={() => toggleCategory(category.id)}
                 className={`
                   relative flex items-start gap-3 p-2 rounded-lg border
-                  transition-all duration-200 text-leftflex-shrink-0 w-auto min-w-[170px] xl:w-full
+                  transition-all duration-200 text-left flex-shrink-0 w-auto min-w-[170px] xl:w-full
                   border-border
                   hover:bg-pink-500/5
                   ${isSelected
