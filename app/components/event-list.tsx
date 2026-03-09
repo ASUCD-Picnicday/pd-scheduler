@@ -54,6 +54,16 @@ export function EventList({
     onScrollToEventDone()
   }, [scrollToEventId, onScrollToEventDone])
 
+  // When page changes, scroll back to top of list
+  useEffect(() => {
+  if (listScrollRef.current) {
+    listScrollRef.current.scrollTo({
+      top: 0,
+      behavior: "smooth", // optional
+    })
+  }
+}, [page])
+
   const pageSize = 20
   const start = page * pageSize + 1
   const end = Math.min((page + 1) * pageSize, allFilteredCount)
