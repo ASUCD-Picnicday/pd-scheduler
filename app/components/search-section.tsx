@@ -134,6 +134,7 @@ export function SearchSection({
           </div>
         )}
         </div>
+       
         <button
           onClick={restart}
           className="flex-shrink-0 py-3.5 px-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors flex items-center justify-center"
@@ -142,6 +143,22 @@ export function SearchSection({
         >
           <HelpCircle className="w-5 h-5" />
         </button>
+      </div>
+       {/* Quick Search Tags */}
+      <div className="flex flex-wrap gap-2 mt-3">
+        <div className="px-1 py-1 text-(--color-muted-foreground) text-xs italic ">Suggested Searches</div>
+        {["battle of the bands", "chemistry show", "chick handling", "cockroach racing", "doxie derby", "laser maze"].map((tag) => (
+          <button
+            key={tag}
+            onClick={() => {
+              setSearchQuery(tag)
+              onSearchSubmit(tag)
+            }}
+            className="px-3 py-1 text-xs font-medium bg-accent/20 text-accent-foreground rounded-full hover:bg-accent/30 transition-colors"
+          >
+            {tag}
+          </button>
+        ))}
       </div>
     </div>
   )
