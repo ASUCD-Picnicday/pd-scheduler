@@ -175,6 +175,7 @@ export function SearchSection({
 
       {/* Quick Search Tags */}
       <div className="flex flex-wrap gap-2 mt-5 mb-1">
+        <div className="px-1 py-1 text-(--color-muted-foreground) text-xs italic ">Suggested Searches</div>
         {["battle of the bands", "chemistry show", "chick handling", "cockroach racing", "doxie derby", "laser maze"].map((tag) => (
           <button
             key={tag}
