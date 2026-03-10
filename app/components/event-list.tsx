@@ -70,7 +70,7 @@ export function EventList({
 
   return (
     <div className="flex-1 lg:flex lg:flex-col lg:min-h-0">
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center justify-between mb-3">
 
         {/* LEFT — Title */}
         <div className="relative">
@@ -135,7 +135,7 @@ export function EventList({
           )}
         </div>
       </div>
-      <div className="mt-4 lg:flex-1 lg:min-h-0 lg:flex lg:flex-col">
+      <div className="lg:flex-1 lg:min-h-0 lg:flex lg:flex-col">
         <div
           ref={listScrollRef}
           className="space-y-2 lg:flex-1 lg:overflow-y-auto pr-2 -mr-2 lg:mr-0"
