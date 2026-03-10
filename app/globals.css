@@ -40,6 +40,14 @@
   --color-border: var(--border);
 }
 
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
 .leaflet-marker-icon.numbered-marker {
   background: none !important;
   border: none !important;
