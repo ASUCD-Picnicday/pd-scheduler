@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from "react"
 import { Plus, Check, MapPin, Clock, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react"
 import type { Event, ScheduledEvent } from "@/app/page"
-import { formatTimeRange, formatTime } from "@/app/lib/time"
 
 interface EventListProps {
   events: Event[]
@@ -55,13 +54,23 @@ export function EventList({
     onScrollToEventDone()
   }, [scrollToEventId, onScrollToEventDone])
 
+  // When page changes, scroll back to top of list
+  useEffect(() => {
+  if (listScrollRef.current) {
+    listScrollRef.current.scrollTo({
+      top: 0,
+      behavior: "smooth", // optional
+    })
+  }
+}, [page])
+
   const pageSize = 20
   const start = page * pageSize + 1
   const end = Math.min((page + 1) * pageSize, allFilteredCount)
 
   return (
     <div className="flex-1 lg:flex lg:flex-col lg:min-h-0">
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center justify-between mb-3">
 
         {/* LEFT — Title */}
         <div className="relative">
@@ -118,6 +127,8 @@ export function EventList({
                   hover:bg-accent hover:text-accent-foreground
                   transition
                   disabled:opacity-30 disabled:cursor-not-allowed
+                  disabled:hover:bg-secondary/50
+                  disabled:hover:text-primary
                 "
               >
                 <ChevronRight className="w-4 h-4" />
@@ -126,7 +137,7 @@ export function EventList({
           )}
         </div>
       </div>
-      <div className="mt-4 lg:flex-1 lg:min-h-0 lg:flex lg:flex-col">
+      <div className="lg:flex-1 lg:min-h-0 lg:flex lg:flex-col">
         <div
           ref={listScrollRef}
           className="space-y-2 lg:flex-1 lg:overflow-y-auto pr-2 -mr-2 lg:mr-0"
@@ -171,7 +182,7 @@ export function EventList({
                         {/* TIME */}
                         <div className="flex items-center gap-1 whitespace-nowrap text-primary font-semibold">
                           <Clock className="w-3 h-3 text-accent flex-shrink-0" />
-                          <span>{formatTime(event.startTime)} - {formatTime(event.endTime)}</span>
+                          <span>{event.startTime || "8:00 AM"} - {event.endTime || "9:00 PM"}</span>
                         </div>
 
                         {/* LOCATION */}
