@@ -24,7 +24,7 @@ Your project is live at:
    ```
    CSV_URL=your_google_sheet_csv_url
    ```
-3. (Optional) Copy the sample database: `cp templates/database.sqlite3 ./database.sqlite3`
+3. (Optional) Copy the sample database: `cp templates/database.sqlite3 ./volumes/database.sqlite3`
    > An empty database will be created on startup if this step is skipped
 4. Start the server to initialize the database: `npm run dev`
 5. Sync events from the spreadsheet: `npx tsx scripts/run-sync.ts`
